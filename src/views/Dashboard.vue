@@ -18,7 +18,7 @@
                             <p>Project Name: {{ project.name }}</p>
                             <p>Status: {{ project.status }}</p>
                             <p>Start Date: {{ project.startDate }} | End Date: {{ project.endDate }}</p>
-                            <button v-if="project.status !== 'Done'" @click="handleEditProject(index)">Edit Project</button>
+                            <button @click="handleEditProject(index)">Edit Project</button>
                         </div>
                     </div>
                     <div v-else>No project/s yet.</div>

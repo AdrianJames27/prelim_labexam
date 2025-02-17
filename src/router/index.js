@@ -48,7 +48,18 @@ const router = createRouter({
       name: 'edit-project',
       component: EditProject,
       meta: { requiresAuth: true },
-      props: true
+      props: true,
+      beforeEnter(to, from, next) {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (to.name === 'edit-project' && user && user.role !== 'admin') {
+            alert('Only admins are allowed to edit this project.');
+
+            next(from.path);
+        } else {
+            next();
+        }
+      }
     }
   ]
 })

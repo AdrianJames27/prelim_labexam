@@ -100,10 +100,10 @@ export default {
         this.status = project.status;
     },
     beforeRouteEnter(to, from, next) {
-        const user = JSON.parse(localStorage.getItem('user'));
+        const projects = JSON.parse(localStorage.getItem('projects'));
 
-        if (to.name === 'edit-project' && user.role !== 'admin') {
-            alert('Only admins are allowed in this route!');
+        if (to.name === 'edit-project' && projects && projects[parseInt(to.params.id)].status === 'Done') {
+            alert('Project is already done, you cannot edit it.');
 
             next(from.path);
         } else {
